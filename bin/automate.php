@@ -1,4 +1,7 @@
 <?php
+/**
+ * This file is a command line app, is used to generate files from a template in src
+ */
 $SRC = "/packages/moonlight/src";
 $APP = "/app";
 $PACK = "/package";

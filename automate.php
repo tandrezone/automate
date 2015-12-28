@@ -13,7 +13,7 @@
  * @param [string] $jsonFile       config file of the application, automate.json
  * @param string $repositoryFile file with the links for the packages
  */
-    function __construct($jsonFile, $repositoryFile = 'automate.config') {
+    function __construct($jsonFile, $repositoryFile = 'automate.rep') {
       $this->rep = $repositoryFile;
       $this->file = $jsonFile;
     }
@@ -65,7 +65,7 @@
     }
 
     /**
-     * install packages, this method get's the packages that i want, search for them in the repository file and if find install 
+     * install packages, this method get's the packages that i want, search for them in the repository file and if find install
      * @param  [string] $name    Name of the packages that i want
      * @param  [string] $version Version of the package that i want
      * @return [type]          [description]
@@ -88,7 +88,7 @@
     }
   }
 
-$a = new automate("automate.json", "automate.config");
+$a = new automate("automate.json", "config/automate.rep");
 /*
 $a->createRep("angularjs", "1.4.2", array("https://ajax.googleapis.com/ajax/libs/angularjs/1.4.2/angular.min.js"));
 $a->createRep("jquery", "1", array("https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"));

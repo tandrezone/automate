@@ -1,0 +1,20 @@
+{
+   "name": "moonlight/automate",
+   "description": "Package to automate",
+   "keywords": ["bd", "automate", "moonlight"],
+   "homepage": "https://github.com/tandrezone/automate",
+   "license": "MIT",
+   "authors": [
+      {
+         "name": "Tiago Andre",
+         "email": "tandrezone@gmail.com",
+         "homepage": "https://github.com/tandrezone"
+      }
+   ],
+   "require": {
+      "php": ">=5.3.0"
+   },
+   "autoload": {
+      "classmap": ["automate.php"]
+   }
+}

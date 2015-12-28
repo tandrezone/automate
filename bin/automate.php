@@ -1,6 +1,8 @@
 <?php
+$SRC = "/packages/moonlight/src";
+$APP = "/app";
+$PACK = "/package";
 error_reporting(0);
-
 if(isset($argv[1])) {
   switch ($argv[1]) {
     case "create":
@@ -36,14 +38,14 @@ if(isset($argv[1])) {
   help();
 }
 function create_package($folder, $package){
-  if (!file_exists("packages/".$folder)) {
-    mkdir("packages/".$folder);
+  if (!file_exists($PACK.$folder)) {
+    mkdir($PACK.$folder);
   }
-  if (!file_exists("packages/".$folder."/".$package)) {
-    mkdir("packages/".$folder."/".$package);
+  if (!file_exists($PACK.$folder."/".$package)) {
+    mkdir($PACK.$folder."/".$package);
   }
-  $data = file_get_contents("automate/composer.json");
-  file_put_contents("packages/".$folder."/".$package."/composer.json", $data);
+  $data = file_get_contents($SRC."/composer.json");
+  file_put_contents($PACK.$folder."/".$package."/composer.json", $data);
 }
 function help(){
   echo "Help:\n";
@@ -58,26 +60,26 @@ function help(){
 }
 function create_controller($name,$empty){
   if($empty == "empty"){
-    $ctrl = file_get_contents("automate/controllerEmpty.php");
+    $ctrl = file_get_contents($SRC."controllerEmpty.php");
   } else {
-    $ctrl = file_get_contents("automate/controller.php");
+    $ctrl = file_get_contents($SRC."controller.php");
   }
   $new_ctrl =str_replace("{{name}}", $name, $ctrl);
-  file_put_contents("app/controllers/".$name."s.php", $new_ctrl);
+  file_put_contents($APP."controllers/".$name."s.php", $new_ctrl);
   echo "Controller ".$name." created with success\n";
 }
 
 function create_model($name){
-  $model = file_get_contents("automate/model.php");
+  $model = file_get_contents($SRC."model.php");
   $new_model =str_replace("{{name}}", $name, $model);
-  file_put_contents("app/models/".$name.".php", $new_model);
+  file_put_contents($APP."models/".$name.".php", $new_model);
   echo "Model ".$name." created with success\n";
 }
 
 function create_routing($name){
-  $rout = file_get_contents("automate/routing.php");
+  $rout = file_get_contents($SRC."routing.php");
   $new_rout =str_replace("{{name}}", $name, $rout);
-  file_put_contents("app/routing.php", $new_rout,FILE_APPEND );
+  file_put_contents($APP."routing.php", $new_rout,FILE_APPEND );
   echo "Routing ".$name." created with success\n";
 }
 function create_tables(){
